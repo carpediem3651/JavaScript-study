@@ -32,7 +32,25 @@
   }
   console.log(shuffle);
   const winBalls = shuffle.slice(0, 6).sort((a,b) => a - b); //slice()를 추가하면 원본이 초기화된다. 오름차순 정렬
-  const bonus = shufflel[6];
+  const bonus = shuffle[6];
   console.log(winBalls, bonus);
+
+  const $result = document.querySelector('#result');
+  const $bonus = document.querySelector('#bonus');
+  const showBall = (number, $target) => {
+    const $ball = document.createElement('div');
+    $ball.className = 'ball';
+    $ball.textContent = number;
+    $target.appendChild($ball);
+  };
+
+  for (let i = 0; i < 6; i++) {
+    setTimeout(() => {
+      showBall(winBalls[i], $result);
+    }, (i + 1)*1000);;
+  }
+  setTimeout(() => {
+    showBall(bonus, $bonus);
+  }, 7000); //7초 후 함수 실행
 </script>
 </body>
