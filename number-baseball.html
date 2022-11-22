@@ -1,0 +1,94 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>숫자야구</title>
+</head>
+<body>
+<form id="form">
+  <input type="text" id="input">
+  <button>확인</button>
+</form>
+<div id="logs"></div>
+<script>
+  const $input = document.querySelector('#input');
+  const $form = document.querySelector('#form');
+  const $logs = document.querySelector('#logs');
+
+  const numbers = []; //[1,2,3,4,5,6,7,8,9]
+  for (let n = 0; n < 9; n += 1) {
+    numbers.push(n+1);
+  }
+  const answer = [];
+  for (let n = 0; n < 4; n +=1) { //네 번 반복한다 [x, y, z, k]
+    const index = Math.floor(Math.random() * numbers.length);
+    answer.push(numbers[index]);
+    numbers.splice(index, 1); //index번째의 값을 1개 제거한다.
+  }
+  console.log(answer);
+
+  const tries = [];
+  function checkInput(input) {
+    if (input.length !== 4) { //입력한 숫자의 길이가 네 자리가 아니면
+      return alert('4자리 숫자를 입력해주세요.')
+    }
+    if (new Set(input).size !==4) { // 중복된 숫자가 있는가
+      return alert('중복되지 않는 값을 입력해주세요.')
+    }
+    if (tries.includes(input)) { // 이미 시도한 값은 아닌가
+      return alert('이미 시도한 값입니다.')
+    }
+    return true;
+  } //검사하는 코드
+
+  let out = 0;
+  let strike = 0;
+  let ball = 0;
+  $form.addEventListener('submit', (event) => {
+    event.preventDefault(); //기본 이벤트를 막는다.
+    const value = $input.value;
+    $input.value = '';
+    if (!checkInput(value)) {
+      return;
+    }
+
+    //입력 값 문제없음
+    if(answer.join('') === value) { // [3,1,4,6] -> '3146'
+      $logs.textContent = '홈런!';
+      return;
+    }//10번 이상 시도하면 실패
+    if (tries.length >=9) {
+      const message = document.createTextNode(`패배! 정답은 ${answer.join('')}`);
+      $logs.appendChild(message);
+      return;
+    }
+
+    // 몇 스트라이크 몇 볼인지 검사
+    // answer:3146, value:1234
+    for (let i = 0; i < answer.length; i++) { // 하나의 숫자를 뽑는다. 
+      const index = value.indexOf(answer[i]);  // 정답에 제시된 숫자 1개와 참여자가 뽑은 숫자를 비교한다.
+      if (index > -1) { // 일치하는 숫자 발견. 일치하는 값이 없으면 indexOf()는 -1 값을 가진다.
+        if(index === i ) { // 자릿수 같음
+          strike += 1;
+        } else { // 숫자만 같음
+          ball += 1;
+        }
+      }
+    }
+
+    // 아웃 검사하기
+    if (strike === 0 && ball === 0) {
+      out++; // 아웃이면 아웃카운트 1추가
+      $logs.append(`${value}:아웃`, document.createElement('br'));
+    } else {
+      $logs.append(`${value}:${strike} 스트라이크 ${ball} 볼`, document.createElement('br'));
+    }
+    if (out === 3) { // 3아웃이면 패배표시 후 게임종료
+      const message = document.createTextNode(`패배! 정답은 ${answer.join('')}`);
+      $logs.appendChild(message);
+      return;
+    }   
+    tries.push(value);
+  });
+</script>
+</body>
+</html>
