@@ -74,10 +74,10 @@
       $('.prev').on('click', function(){
          
          if(지금사진 == 3) { //지금 보이는 사진이 1이면
-           $('.slide-container').css('transform', 'translateX(100vw'); //2번사진 보여줘
+           $('.slide-container').css('transform', 'translateX(-100vw'); //2번사진 보여줘
            지금사진--;
          } else if(지금사진 == 2){ // 지금 보이는 사진이 2이면
-           $('.slide-container').css('transform', 'translateX(200vw'); //1번사진 보여줘
+           $('.slide-container').css('transform', 'translateX(-0vw'); //1번사진 보여줘
            지금사진--;
          }
        });
