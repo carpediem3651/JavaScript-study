@@ -26,10 +26,32 @@
              <button type="button" class="btn btn-danger" id="close">닫기</button>
           </form> 
         </div>
-    </div> 
+    </div>
+    
+    <nav class="navbar navbar-light bg-light">
+      <div class="container-fluid">
+        <span class="navbar-brand">JSShop</span>
+        <span class="badge bg-dark">Dark 🔄</span>
+        <button class="navbar-toggler" type="button">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </nav>
 
-    <script> 
-    document.getElementById('email').value; // 사용자가 <input id="email"> 에 입력한 값
+    <script>
+
+      var clickCnt = 0;
+
+      $('.badge').on('click', function() {
+        clickCnt++;
+        if(clickCnt % 2 == 0) {// badge 클릭 횟수가 짝수면 내부 글자를 Dark로 변경
+          $('.badge').html('Light 🔄');
+        } else if(clickCnt % 2 == 1) { //badge 클릭 횟수가 홀수면 내부 글자를 Light로 변경한다
+          $('.badge').html('Dark 🔄');
+        }
+      });
+    
+    // document.getElementById('email').value; 사용자가 <input id="email"> 에 입력한 값
 
     $('form').on('submit', function(){ //전송버튼 눌러
       if(document.getElementById('email').value=='') { // 공백이면

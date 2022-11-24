@@ -37,3 +37,7 @@
 .hide {
     display: none;
 }
+.dark {
+    background: black;
+    color: white;
+}
