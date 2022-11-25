@@ -4,13 +4,26 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>index.html</title>
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="main.css">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   </head>
   <body>
 
+    <nav class="navbar navbar-light bg-light">
+      <div class="container-fluid">
+        <span class="navbar-brand">JSShop</span>
+        <span class="badge bg-dark">Dark 🔄</span>
+        <button class="navbar-toggler" type="button">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </nav>
+
     <button id="login">로그인</button>
+    <div style="width: 200px; height: 100px; overflow-y: scroll">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium ea sunt magnam laborum unde cum vitae reprehenderit, eos obcaecati voluptatem officia at. Nobis saepe dolor laboriosam maiores sed blanditiis corrupti?</div>
+
+    <div style="height: 1000px;"></div>
 
     <div class="black-bg">
         <div class="white-bg">
@@ -27,16 +40,6 @@
           </form> 
         </div>
     </div>
-    
-    <nav class="navbar navbar-light bg-light">
-      <div class="container-fluid">
-        <span class="navbar-brand">JSShop</span>
-        <span class="badge bg-dark">Dark 🔄</span>
-        <button class="navbar-toggler" type="button">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      </div>
-    </nav>
 
   <div style="overflow: hidden">
     <div class="slide-container">
@@ -56,6 +59,24 @@
   <button class="prev">이전</button>
 
     <script>
+      $('.lorem').on('scroll', function(){
+        var 스크롤양 = document.querySelector('.lorem').scrollTop;
+        var 실제높이 = document.querySelector('.lorem').scrollHeight;
+        var 높이 = document.querySelector('.lorem').clientHeight;
+        if (스크롤양 + 높이 > 실제높이 -10) {
+          alert('다읽음')
+        }
+      });
+
+      $(window).on('scroll', function(){
+        if (window.scrollY > 100) {
+          $('.navbar-brand').css('font-size', '20px');
+        } else {
+          $('.navbar-brand').css('font-size', '30px');
+        }
+      })
+
+      window.addEventListener
 
       var 지금사진 = 1;
       //다음 버튼을 누르면
