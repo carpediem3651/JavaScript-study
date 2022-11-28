@@ -14,7 +14,7 @@
           <img src="https://via.placeholder.com/600">
           <div class="card-body">
             <h5 class="card-title">Card title</h5>
-            <p>가격 : 70000</p>
+            <p>가격 : <span class="card-price"></span></p>
             <button class="btn btn-danger">주문하기</button>
           </div>
         </div>
@@ -22,7 +22,7 @@
           <img src="https://via.placeholder.com/600">
           <div class="card-body">
             <h5 class="card-title">Card title</h5>
-            <p>가격 : 70000</p>
+            <p>가격:<span class="card-price"></span></p>
             <button class="btn btn-danger">주문하기</button>
           </div>
         </div>
@@ -30,7 +30,7 @@
           <img src="https://via.placeholder.com/600">
           <div class="card-body">
             <h5 class="card-title">Card title</h5>
-            <p>가격 : 70000</p>
+            <p>가격 : <span class="card-price"></span></p>
             <button class="btn btn-danger">주문하기</button>
           </div>
         </div>
@@ -45,7 +45,7 @@
 
         for(i=0; i<3; i++) {
         document.querySelectorAll('.card-title')[i].innerHTML = products[i].title;
-
+        document.querySelectorAll('.card-price')[i].innerHTML = products[i].price;
         }
         
 
