@@ -55,6 +55,18 @@
       </div>
     </div>
 
+    <form class="container my-5 form-group">
+      <p>상품선택</p>
+      <select class="form-select mt-2">
+        <option>모자</option>
+        <option>셔츠</option>
+      </select>
+      <select class="form-select mt-2 form-hide">
+        <option>95</option>
+        <option>100</option>
+      </select>
+    </form>
+
     <div class="container mt-5">
         <ul class="list">
           <li class="tab-button" data-id="0">Products</li>
@@ -72,10 +84,15 @@
         </div>
     </div>
 
-    <script>
-      var car2 = {name:'소나타', price:[50000,3000,4000]}
-      document.querySelector('.car-title').innerHTML = car2.name;
-      document.querySelector('.car-price').innerHTML = car2.price[2];
+    <script> 
+    $('.form-select').eq(0).on('input', function() { //input의 값이 변경될 때 마다 실행
+      if($('.form-select').eq(0).val() == '셔츠') { //첫 번째 'form-select' 클래스의 값이 '셔츠' 일 때
+        $('.form-select').eq(1).removeClass('form-hide'); // 두 번째 'form-select'클래스의 'form-hide'를 제거한다.
+      } else {
+        $('.form-select').eq(1).addClass('form-hide');
+      }
+
+    });
     </script>
     
     <script src="tab.js"></script>
