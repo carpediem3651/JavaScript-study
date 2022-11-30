@@ -60,6 +60,7 @@
       <select class="form-select mt-2">
         <option>모자</option>
         <option>셔츠</option>
+        <option>바지</option>
       </select>
       <select class="form-select mt-2 form-hide">
         <option>95</option>
@@ -84,12 +85,18 @@
         </div>
     </div>
 
-    <script> 
+    <script>
+    var pants = [28, 30, 32];
+    
     $('.form-select').eq(0).on('input', function() { //input의 값이 변경될 때 마다 실행
       if($('.form-select').eq(0).val() == '셔츠') { //첫 번째 'form-select' 클래스의 값이 '셔츠' 일 때
         $('.form-select').eq(1).removeClass('form-hide'); // 두 번째 'form-select'클래스의 'form-hide'를 제거한다.
-      } else {
-        $('.form-select').eq(1).addClass('form-hide');
+      } else if(value == '바지') {
+        $('.form-select').eq(1).removeClass('form-hide');
+        $('.form-select').eq(1).html('');
+        pants.forEach(function(a){
+          $('.form-select').eq(1).append(`<option>${a}</option>`)
+        })
       }
 
     });

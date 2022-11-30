@@ -15,9 +15,3 @@ function 탭열기(숫자) {
     $('.tab-content').removeClass('show');
     $('.tab-content').removeClass('show');
 }
-
-//클릭한다
-$('.form-select mt-2"').on('click', function() {
-//form-select mt-2클래스에 붙은 클래스가 hide에서 show로 변경된다.
-    document.getElementsByClassName('hide').className='show';
-});
